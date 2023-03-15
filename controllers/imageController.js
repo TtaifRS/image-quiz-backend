@@ -67,6 +67,15 @@ exports.getImages = catchAsyncError(async (req, res) => {
   })
 })
 
+exports.getAllImages = catchAsyncError(async (req, res) => {
+  const Images = await Image.find()
+
+  res.status(200).json({
+    success: true,
+    images: Images
+  })
+})
+
 exports.singleImage = catchAsyncError(async (req, res) => {
   const image = await Image.findById(req.params.id)
 
